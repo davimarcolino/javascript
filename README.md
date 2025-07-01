@@ -1,2 +1,2 @@
 # javascript
-Cursos e Projetos de JavaScript
+Cursos e Projetos de JavaScript.
