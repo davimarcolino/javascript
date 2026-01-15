@@ -29,6 +29,7 @@
         }
         input[type="text"] {
             color: rgb(107, 0, 0);
+            flex: 1 1 100px;
         }
         input[type="text"]:focus-within {
             background-color: rgb(255, 115, 115);
@@ -37,6 +38,8 @@
         input#testar {
             background-color: rgb(255, 115, 115);
             color: white;
+            width: 100%;
+            max-width: 500px;
         }
         /*input#resetar {
             display: none;
@@ -54,15 +57,23 @@
             font-size: 2em;
             font-weight: bold;
         }
+        div#input-name {
+            display: flex;
+            width: 100%;
+            max-width: 500px;
+            align-items: center;
+        }
         span#res-text {
             display: none;
         }
         div#res-container {
             display: flex;
             background-color: white;
+            flex-basis: 100%;
+            max-width: 500px;
             border: 2px solid rgb(107, 0, 0);
             height: 10px;
-            padding: 3px;
+            padding: 9px;
             border-radius: 10px;
             flex-flow: row nowrap;
             align-items: center;
@@ -105,7 +116,7 @@
             var n2 = input2.value
             resbar.style.flexBasis = '100%'
             restxt.style.display = 'block'
-            restxt.innerHTML = '100%'
+            restxt.innerHTML = `100%<br>${n1} e ${n2} são um casal perfeito!`
             // input4.style.display = 'block'
         }
     </script>
