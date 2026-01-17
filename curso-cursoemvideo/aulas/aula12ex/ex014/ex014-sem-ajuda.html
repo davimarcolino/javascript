@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do Dia</title>
+    <style>
+        body {
+            background-color: blue;
+            font: 1em normal Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        div#container {
+            background-color: white;
+            color: black;
+            width: 400px;
+            height: 250px;
+            margin: auto;
+            padding: 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        div#img {
+            background-size: cover;
+            border-radius: 50%;
+            width: 190px;
+            margin: auto;
+            aspect-ratio: 1 / 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hora do Dia</h1>
+    <div id="container">
+        <p id="res"></p>
+        <div id="img"></div>
+    </div>
+    <p>&copy; CursoemVideo</p>
+    <script>
+        var agora = new Date()
+        var horas = agora.getHours()
+        var res = document.querySelector('p#res')
+        var img = document.querySelector('div#img')
+        var bg = document.body
+        res.innerText = `Agora são ${horas} horas`
+        if (horas < 12) {
+            img.style.backgroundImage = 'url("https://www.novotempo.com/wp-content/uploads/2020/04/Amanhecer01.jpg")'
+            bg.style.backgroundColor = 'rgb(255, 240, 103)'
+        } else if (horas < 18) {
+            img.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2022/12/26/11/40/sky-7678824_1280.jpg")'
+            bg.style.backgroundColor = 'rgb(180, 87, 24)'
+        } else {
+            img.style.backgroundImage = 'url("https://img.freepik.com/fotos-premium/linda-noite-no-oceano-com-lua-cheia_104785-866.jpg?semt=ais_hybrid&w=740&q=80")'
+            bg.style.backgroundColor = 'rgb(58, 58, 58)'
+        }
+    </script>
+</body>
+</html>

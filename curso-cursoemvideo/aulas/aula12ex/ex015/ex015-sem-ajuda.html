@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Idade</title>
+    <style>
+        body {
+            background-color: rgb(106, 106, 255);
+            font: 1em normal Arial, Helvetica, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        div#container {
+            background-color: white;
+            color: black;
+            width: 400px;
+            height: 250px;
+            margin: auto;
+            padding: 10px;
+            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: left;
+        }
+        div#img {
+            background-size: cover;
+            border-radius: 50%;
+            width: 190px;
+            margin: auto;
+            aspect-ratio: 1 / 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Idade</h1>
+    <div id="container">
+        <div id="ancontainer">
+            <label for="antxt">Ano de Nascimento: </label>
+            <input type="number" name="antxt" id="antxt">
+        </div>
+        <div id="sxcontainer">
+            <span>Sexo: </span>
+            <input type="radio" name="sxselect" id="sxselect1" value="M"><label for="sxselect1">Masculino</label>
+            <input type="radio" name="sxselect" id="sxselect2" value="F"><label for="sxselect2">Feminino</label>
+        </div>
+        <input type="button" value="Verificar" onclick="calcular()">
+        <div id="res">
+            <p>Preencha os dados acima para ver o resultado!</p>
+            <div id="img"></div>
+        </div>
+    </div>
+    <p>&copy; CursoemVideo</p>
+    <script>
+        function calcular() {
+            var agora = new Date()
+            var anoAtual = agora.getFullYear()
+            var antxt = document.querySelector('input#antxt')
+            var sxselect1 = document.querySelector('input#sxselect1')
+            var sxselect2 = document.querySelector('input#sxselect2')
+            var res = document.querySelector('div#res')
+            var anoNasc = antxt.value
+            var idade = anoAtual - anoNasc
+            if (sxselect1 == ariaSelected) {
+                var gênero = 'homem'
+            } else {
+                var gênero = 'mulher'
+            }
+            res.innerHTML = `Detectamos ${gênero} com ${idade} anos.`
+        }
+    </script>
+</body>
+</html>
