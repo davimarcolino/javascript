@@ -10,13 +10,14 @@
             display: flex;
             background: wheat url('https://static.vecteezy.com/system/resources/thumbnails/011/449/271/small/groovy-heart-romantic-background-vector.jpg') center center no-repeat fixed;
             background-size: cover;
-            width: 98%;
+            width: 99%;
             height: 97vh;
             justify-content: center;
             align-items: center;
         }
         main {
             display: flex;
+            width: 500px;
             flex-flow: column nowrap;
             gap: 10px;
             font-family: 'Dancing Script';
@@ -29,7 +30,7 @@
         }
         input[type="text"] {
             color: rgb(107, 0, 0);
-            flex: 1 1 100px;
+            flex: 1 1 30%;
         }
         input[type="text"]:focus-within {
             background-color: rgb(255, 115, 115);
@@ -52,6 +53,8 @@
             margin: 0;
         }
         span {
+            position: relative;
+            top: -5px;
             text-align: center;
             color: rgb(107, 0, 0);
             font-size: 2em;
@@ -59,12 +62,9 @@
         }
         div#input-name {
             display: flex;
-            width: 100%;
+            flex-basis: 100%;
             max-width: 500px;
             align-items: center;
-        }
-        span#res-text {
-            display: none;
         }
         div#res-container {
             display: flex;
@@ -72,20 +72,30 @@
             flex-basis: 100%;
             max-width: 500px;
             border: 2px solid rgb(107, 0, 0);
-            height: 10px;
-            padding: 9px;
+            padding: 3.5px;
             border-radius: 10px;
             flex-flow: row nowrap;
-            align-items: center;
+            align-items: stretch;
             justify-content: flex-start;
         }
         div#res-bar {
             flex: 0 0 0%;
             background-color: red;
-            height: 100%;
+            height: 12px;
             border-radius: 10px;
             transition-duration: 3s;
             transition-timing-function: linear;
+        }
+        div#res-text {
+            display: none;
+            max-width: 500px;
+            text-align: center;
+            color: rgb(107, 0, 0);
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+        div#res-text p {
+            margin: 1px;
         }
     </style>
 </head>
@@ -102,7 +112,7 @@
         <div id="res-container">
             <div id="res-bar"></div>
         </div>
-        <span id="res-text"></span>
+        <div id="res-text"></div>
     </main>
     <script>
         function testar() {
@@ -111,7 +121,7 @@
             var input3 = window.document.querySelector('input#testar')
             var input4 = window.document.querySelector('input#resetar')
             var resbar = window.document.querySelector('div#res-bar')
-            var restxt = window.document.querySelector('span#res-text')
+            var restxt = window.document.querySelector('div#res-text')
             var n1 = input1.value
             var n2 = input2.value
             var res = 0
@@ -139,11 +149,11 @@
                     var res = Math.floor(Math.random() * (100 - 0 + 1)) + 0
                     break
             }
-            resbar.style.width = res
+            resbar.style.flexBasis = `${res}%`
             if (res >= 50) {
-                restxt.innerHTML = `${res}%<br>${n1} e ${n2} são um casal perfeito!`
+                restxt.innerHTML = `<p>${res}%</p><p>${n1} e ${n2} são um casal perfeito!</p>`
             } else {
-                restxt.innerHTML = `${res}%<br>${n1} e ${n2} não são um casal!`
+                restxt.innerHTML = `<p>${res}%</p><p>${n1} e ${n2} não são um casal!</p>`
             }
             // input4.style.display = 'block'
         }
