@@ -93,9 +93,9 @@
     <main id="main">
         <h1>Love Tester</h1>
         <div id="input-name">
-            <input type="text" name="n1" id="n1" placeholder="Primeira pessoa" autocomplete="off">
+            <input type="text" name="n1" id="n1" placeholder="Homem" autocomplete="off">
             <span>+</span>
-            <input type="text" name="n2" id="n2" placeholder="Segunda pessoa" autocomplete="off">
+            <input type="text" name="n2" id="n2" placeholder="Mulher" autocomplete="off">
             <!--<input id="resetar" type="reset" value="Resetar">-->
         </div>
         <input id="testar" type="submit" value="Testar" onclick="testar()">
@@ -114,9 +114,37 @@
             var restxt = window.document.querySelector('span#res-text')
             var n1 = input1.value
             var n2 = input2.value
-            resbar.style.flexBasis = '100%'
+            var res = 0
             restxt.style.display = 'block'
-            restxt.innerHTML = `100%<br>${n1} e ${n2} são um casal perfeito!`
+            switch (true) {
+                case (n1 == 'Davi' && n2 == 'Nicole'):
+                    var res = 100
+                    break
+                case (n1 == 'Henrique' && n2 == 'Nicole'):
+                    var res = 0
+                    break
+                case (n1 == 'Samuel' && n2 == 'Nicole'):
+                    var res = 0
+                    break
+                case (n1 == 'Gustavo' && n2 == 'Ana'):
+                    var res = 100
+                    break
+                case (n1 == 'Guilherme' && n2 == 'Ana'):
+                    var res = 100
+                    break
+                case (n1 == 'Davi' && n2 == 'Ana'):
+                    var res = 100
+                    break
+                default:
+                    var res = Math.floor(Math.random() * (100 - 0 + 1)) + 0
+                    break
+            }
+            resbar.style.width = res
+            if (res >= 50) {
+                restxt.innerHTML = `${res}%<br>${n1} e ${n2} são um casal perfeito!`
+            } else {
+                restxt.innerHTML = `${res}%<br>${n1} e ${n2} não são um casal!`
+            }
             // input4.style.display = 'block'
         }
     </script>
