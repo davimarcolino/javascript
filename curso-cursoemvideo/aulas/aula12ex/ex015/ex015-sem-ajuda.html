@@ -40,8 +40,8 @@
         </div>
         <div id="sxcontainer">
             <span>Sexo: </span>
-            <input type="radio" name="sxselect" id="sxselect1" value="M"><label for="sxselect1">Masculino</label>
-            <input type="radio" name="sxselect" id="sxselect2" value="F"><label for="sxselect2">Feminino</label>
+            <input type="radio" name="sxselect" id="sxselect1" value="nd" onselect="mudarValueM()"><label for="sxselect1">Masculino</label>
+            <input type="radio" name="sxselect" id="sxselect2" value="nd" onselect="mudarValueF()"><label for="sxselect2">Feminino</label>
         </div>
         <input type="button" value="Verificar" onclick="calcular()">
         <div id="res">
@@ -51,6 +51,14 @@
     </div>
     <p>&copy; CursoemVideo</p>
     <script>
+        function mudarValueM() {
+            document.querySelector('input#sxselect1').value = 'M'
+            document.querySelector('input#sxselect2').value = 'nd'
+        }
+        function mudarValueF() {
+            document.querySelector('input#sxselect2').value = 'F'
+            document.querySelector('input#sxselect1').value = 'nd'
+        }
         function calcular() {
             var agora = new Date()
             var anoAtual = agora.getFullYear()
@@ -60,9 +68,9 @@
             var res = document.querySelector('div#res')
             var anoNasc = antxt.value
             var idade = anoAtual - anoNasc
-            if (sxselect1 == ariaSelected) {
+            if (sxselect1.value == 'M') {
                 var gênero = 'homem'
-            } else {
+            } else if (sxselect2.value == 'F') {
                 var gênero = 'mulher'
             }
             res.innerHTML = `Detectamos ${gênero} com ${idade} anos.`
