@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Contador</title>
+    <style>
+        @charset "UTF-8";
+
+        body {
+            background: rgb(70, 142, 236);
+            font: normal 15pt Arial;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.35);
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <div id="form">
+            <p>
+                <label for="txtinicio">Início: </label>
+                <input type="number" name="txtinicio" id="txtinicio">
+            </p>
+            <p>
+                <label for="txtfim">Fim: </label>
+                <input type="number" name="txtfim" id="txtfim">
+            </p>
+            <p>
+                <label for="txtpasso">Passo: </label>
+                <input type="number" name="txtpasso" id="txtpasso">
+            </p>
+            <input type="button" value="Contar" onclick="contar()">
+        </div>
+        <div id="res">
+            <p>Preparando a contagem...</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; CursoemVideo</p>
+    </footer>
+    <script>
+        function contar() {
+            var txtinicio = document.getElementById('txtinicio')
+            var txtfim = document.getElementById('txtfim')
+            var txtpasso = document.getElementById('txtpasso')
+            var res = document.getElementById('res')
+            // var inicio = txtinicio.value
+            var fim = txtfim.value
+            var passo = txtpasso.value
+            /*
+            while (inicio <= fim) {
+                res.innerHTML += `<p>${inicio} &#x261E</p>`
+                inicio += passo
+            }
+            */
+            for (var inicio = txtinicio.value; inicio <= fim; inicio += passo) {
+                res.innerHTML += `${inicio} &#x261E`
+            }
+        }
+    </script>
+</body>
+</html>
