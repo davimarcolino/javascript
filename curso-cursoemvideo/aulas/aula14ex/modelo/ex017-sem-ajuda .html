@@ -12,15 +12,35 @@
     </header>
     <section>
         <div>
-            Testando...
+            <label for="num">Número:</label>
+            <input type="number" name="num" id="num">
+            <input type="button" value="Gerar Tabuada" onclick="gerarTabuada()">
         </div>
         <div>
-            Olá!
+            <textarea name="res" id="res" rows="10" disabled>Digite um número acima
+            </textarea>
         </div>
     </section>
     <footer>
         <p>&copy; CursoemVideo</p>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        function gerarTabuada() {
+            var txtnum = document.getElementById('num')
+            var res = document.getElementById('res')
+            var fator1 = parseInt(txtnum.value)
+            var fator2 = 1
+            if (txtnum.value == '') {
+                window.alert('Por favor, digite um número!')
+            } else {
+                res.innerHTML = ''
+                while (fator2 <= 10) {
+                    var produto = fator1 * fator2
+                    res.innerHTML += `${fator1} x ${fator2} = ${produto} | `
+                    fator2++
+                }
+            }
+        }
+    </script>
 </body>
 </html>
