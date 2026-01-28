@@ -28,7 +28,7 @@
         function gerarTabuada() {
             var txtnum = document.getElementById('num')
             var res = document.getElementById('res')
-            var fator1 = parseInt(txtnum.value)
+            var fator1 = Number(txtnum.value)
             var fator2 = 1
             if (txtnum.value == '') {
                 window.alert('Por favor, digite um número!')
@@ -36,7 +36,11 @@
                 res.innerHTML = ''
                 while (fator2 <= 10) {
                     var produto = fator1 * fator2
-                    res.innerHTML += `${fator1} x ${fator2} = ${produto} | `
+                    if (fator2 == 10) {
+                        res.innerHTML += `${fator1} x ${fator2} = ${produto}`
+                    } else {
+                        res.innerHTML += `${fator1} x ${fator2} = ${produto} | `
+                    }
                     fator2++
                 }
             }
