@@ -13,15 +13,48 @@
     <section>
         <div>
             <p><label for="txtnum">Número (entre 1 e 100):</label><input type="number" name="num" id="txtnum" min="1" max="100"><input type="button" value="Adicionar" onclick="addNumero()"></p>
+            <select name="selnum" id="selnum" size="6"></select>
+            <p><input type="button" value="Finalizar" onclick="finalizar()"></p>
         </div>
-        <div>
-            <select name="sel" id="sel" size="6"></select>
-            <input type="button" value="">
+        <div id="res">
+
         </div>
     </section>
     <footer>
         <p>&copy; CursoemVideo</p>
     </footer>
-    <script></script>
+    <script>
+        let num = []
+        
+        function addNumero() {
+            let selnum = document.getElementById('selnum')
+            let txtnum = document.getElementById('txtnum')
+            if (txtnum.value > 0 && txtnum.value <= 100 && num.indexOf(txtnum.value) < 0 && txtnum.value.length > 0) {
+                num.push(Number(txtnum.value))
+                selnum.innerHTML += `<option>Valor ${num[num.length - 1]} adicionado.</option>`
+            } else {
+                window.alert('Valor inválido ou já encontrado na lista')
+            }
+            txtnum.value = ''
+        }
+
+        function soma(n) {
+            let soma = 0
+            for (var c = 0; c < n.length; c++) {
+                soma += n[c]
+            }
+            return soma
+        }
+
+        function finalizar() {
+            let res = document.getElementById('res')
+            num.sort((a, b) => a - b)
+            res.innerHTML = `<p>Ao todo, temos ${num.length} números cadastrados.</p>`
+            res.innerHTML += `<p>O maior valor informado foi ${num[num.length - 1]}.</p>`
+            res.innerHTML += `<p>O menor valor informado foi ${num[0]}.</p>`
+            res.innerHTML += `<p>Somando todos os valores, temos ${soma(num)}.</p>`
+            res.innerHTML += `<p>A média dos valores digitados é ${soma(num) / num.length}.</p>`
+        }
+    </script>
 </body>
 </html>
