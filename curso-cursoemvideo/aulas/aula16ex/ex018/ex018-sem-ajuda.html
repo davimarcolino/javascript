@@ -25,11 +25,13 @@
     </footer>
     <script>
         let num = []
+        var res = document.getElementById('res')
         
         function addNumero() {
+            res.innerHTML = ''
             let selnum = document.getElementById('selnum')
             let txtnum = document.getElementById('txtnum')
-            if (txtnum.value > 0 && txtnum.value <= 100 && num.indexOf(txtnum.value) < 0 && txtnum.value.length > 0) {
+            if (txtnum.value > 0 && txtnum.value <= 100 && num.indexOf(Number(txtnum.value)) == -1 && txtnum.value.length > 0) {
                 num.push(Number(txtnum.value))
                 selnum.innerHTML += `<option>Valor ${num[num.length - 1]} adicionado.</option>`
             } else {
@@ -47,13 +49,16 @@
         }
 
         function finalizar() {
-            let res = document.getElementById('res')
-            num.sort((a, b) => a - b)
-            res.innerHTML = `<p>Ao todo, temos ${num.length} números cadastrados.</p>`
-            res.innerHTML += `<p>O maior valor informado foi ${num[num.length - 1]}.</p>`
-            res.innerHTML += `<p>O menor valor informado foi ${num[0]}.</p>`
-            res.innerHTML += `<p>Somando todos os valores, temos ${soma(num)}.</p>`
-            res.innerHTML += `<p>A média dos valores digitados é ${soma(num) / num.length}.</p>`
+            if (num.length > 0) {
+                num.sort((a, b) => a - b)
+                res.innerHTML = `<p>Ao todo, temos ${num.length} números cadastrados.</p>`
+                res.innerHTML += `<p>O maior valor informado foi ${num[num.length - 1]}.</p>`
+                res.innerHTML += `<p>O menor valor informado foi ${num[0]}.</p>`
+                res.innerHTML += `<p>Somando todos os valores, temos ${soma(num)}.</p>`
+                res.innerHTML += `<p>A média dos valores digitados é ${soma(num) / num.length}.</p>`
+            } else {
+                window.alert('Adicione valores antes de finalizar!')
+            }
         }
     </script>
 </body>
